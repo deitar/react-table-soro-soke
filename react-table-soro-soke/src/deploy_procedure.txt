@@ -1,0 +1,18 @@
+-- install babel package
+npm install --save-dev @babel/cli @babel/preset-react
+
+-- update package.json
+  --add
+    "babel": {
+        "presets": [
+          "@babel/preset-react"
+        ]    
+      },
+
+--add to scripts
+"publish:npm": "(IF exist dist (rmdir /Q /S dist)) && mkdir dist &&  babel src/components -d dist --copy-files --no-copy-ignored"
+
+--run
+npm login
+npm run publish:npm
+npm publish
